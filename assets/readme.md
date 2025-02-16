@@ -12,3 +12,6 @@ https://opengameart.org/content/snake-sprites-sound
 
 eating sound:
 https://opengameart.org/content/apple-bite
+
+
+I used https://ezgif.com for resizing and sprite sheet cutting
