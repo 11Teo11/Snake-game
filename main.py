@@ -1,10 +1,8 @@
-from wsgiref.util import application_uri
-
 import pygame, sys, random
 from pygame import KEYDOWN
 from pygame.math import Vector2
 
-# INITIALIZARI
+# INITIALIZATIONS
 pygame.init()
 cell_size = 24
 columns = 30
@@ -14,7 +12,7 @@ screen = pygame.display.set_mode((w,h))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Joc_00")
 
-# LISTA FRUCTE
+# FRUIT LIST
 fruits = []
 for i in range(1,14):
     if i < 10:
@@ -24,7 +22,7 @@ for i in range(1,14):
     p = pygame.image.load(f"gallery/{i}.png").convert_alpha()
     fruits.append(p)
 
-# CORP SARPE
+# SNAKE BODY
 snake_head = [pygame.image.load("gallery/snake000.png").convert_alpha(),
                   pygame.image.load("gallery/snake001.png").convert_alpha(),
                   pygame.image.load("gallery/snake002.png").convert_alpha(),
@@ -42,9 +40,10 @@ snake_body = [pygame.image.load("gallery/snake008.png").convert_alpha(),
                   pygame.image.load("gallery/snake012.png").convert_alpha(),
                   pygame.image.load("gallery/snake013.png").convert_alpha()]
 
+# GRASS
 grass = pygame.image.load("gallery/tile1234.png").convert_alpha()
 
-# game_font = pygame.font.Font("fonts/DSketch.otf",24)
+# FONT
 game_font = pygame.font.Font(None,24)
 
 class SNAKE:
@@ -52,11 +51,6 @@ class SNAKE:
         self.reset()
 
     def draw_snake(self):
-        # for p in range(len(self.body)):
-        #     snake_rect = pygame.Rect(self.body[p].x * cell_size, self.body[p].y * cell_size, cell_size, cell_size)
-        #     # pygame.draw.rect(screen,(0,48,65),snake_rect)
-        #     pygame.draw.rect(screen, (213, 115, 243), snake_rect)
-
         for p in range(len(self.body)):
             snake_rect = pygame.Rect(self.body[p].x * cell_size, self.body[p].y * cell_size, cell_size, cell_size)
             if p == 0 :
@@ -116,7 +110,6 @@ class SNAKE:
             y_new = 0
         elif y_new < 0:
             y_new = rows
-        # body_copy.insert(0,body_copy[0] + self.direction)
         body_copy.insert(0,Vector2(x_new,y_new))
         self.body = body_copy[:]
 
@@ -153,7 +146,6 @@ class FRUIT:
     def draw_fruit(self):
         fruit_rect = pygame.Rect(self.poz.x * cell_size ,self.poz.y * cell_size, cell_size, cell_size)
         screen.blit(fruits[self.nr],fruit_rect)
-        # pygame.draw.rect(screen,(211,31,255),fruit_rect)
 
 class MAIN:
     def __init__(self):
@@ -191,13 +183,6 @@ class MAIN:
         self.snake.reset()
 
     def draw_grass(self):
-        # grass_color = (167,209,61)
-        # grass_color = (170,225,80)
-        # for i in range(columns):
-        #     for j in range(rows):
-        #         if (i+j)%2 == 1:
-        #             grass_rect = pygame.Rect(i*cell_size, j*cell_size, cell_size, cell_size)
-        #             pygame.draw.rect(screen,grass_color,grass_rect)
         for i in range(0,columns,2):
             for j in range(0,rows,2):
                 grass_rect = pygame.Rect(i * cell_size, j * cell_size, cell_size*2, cell_size*2)
@@ -240,7 +225,7 @@ while run:
             main_game.update()
             ok = 1
 
-    screen.fill((175,235,90)) ## min 18
+    screen.fill((175,235,90))
     main_game.draw_elements()
     pygame.display.update()
     clock.tick(60)
