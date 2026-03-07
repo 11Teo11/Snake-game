@@ -1,4 +1,4 @@
-# Snake Game - Python Personal Project
+# noStops - Snake Game Python Personal Project
 
 ## Description
 This project is an implementation of the classic Snake game, developed in Python using the Pygame library. The objective of the project was to deepen my understanding of Object-Oriented Programming (OOP) concepts and manage game logic within a 2D graphical environment.
